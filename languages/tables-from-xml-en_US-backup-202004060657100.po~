@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tables From XML\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-06 06:46+0000\n"
+"PO-Revision-Date: 2020-04-06 06:57+0000\n"
+"Last-Translator: Patryk Sawicki\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.2; wp-5.4"
+
+#. Description of the plugin
+msgid "Create table from XML file."
+msgstr "Create table from XML file."
+
+#: tables-from-xml.php:23
+msgid "Daily:"
+msgstr "Daily:"
+
+#: tables-from-xml.php:67
+msgid "Enter the plugin settings."
+msgstr "Enter the plugin settings."
+
+#: tables-from-xml.php:97
+msgid "Enter the time to daily check."
+msgstr "Enter the time to daily check."
+
+#: tables-from-xml.php:87
+msgid "Enter URL to XML file."
+msgstr "Enter URL to XML file."
+
+#. Author URI of the plugin
+msgid "https://patryksawicki.pl"
+msgstr "https://patryksawicki.pl"
+
+#. URI of the plugin
+msgid "https://patryksawicki.pl/wp-plugins/tables-from-xml"
+msgstr "https://patryksawicki.pl/wp-plugins/tables-from-xml"
+
+#. Author of the plugin
+msgid "Patryk Sawicki"
+msgstr "Patryk Sawicki"
+
+#: tables-from-xml.php:81
+msgid "Set plugin settings"
+msgstr "Set plugin settings"
+
+#: tables-from-xml.php:20
+msgid "Settings"
+msgstr "Settings"
+
+#: tables-from-xml.php:92
+msgid "Should the file be checked daily?"
+msgstr "Should the file be checked daily?"
+
+#. Name of the plugin
+#: tables-from-xml.php:53 tables-from-xml.php:66
+msgid "Tables From XML"
+msgstr "Tables From XML"
+
+#: tables-from-xml.php:52
+msgid "Tables From XML - Options"
+msgstr "Tables From XML - Options"
+
+#: tables-from-xml.php:24
+msgid "Time:"
+msgstr "Time:"
+
+#: tables-from-xml.php:22
+msgid "URL:"
+msgstr ""
