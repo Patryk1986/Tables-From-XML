@@ -3,7 +3,7 @@
  * Plugin Name: Tables From XML
  * Plugin URI: https://patryksawicki.pl/wp-plugins/tables-from-xml
  * Description: Create table from XML file.
- * Version: 1.7
+ * Version: 1.8
  * Author: Patryk Sawicki
  * Author URI: https://patryksawicki.pl
  */
@@ -222,8 +222,8 @@ function tfx_table($attr)
 		$options=get_option('tfx_options');
 		if(isset($options['daily']) && $options['daily']==1)
 		{
-			$lastUpdate=get_option('tfx_last_update');
-			if(empty($lastUpdate) || $lastUpdate<strtotime(date('Y-m-d').' 00:00:00'))
+//			$lastUpdate=get_option('tfx_last_update');
+//			if(empty($lastUpdate) || $lastUpdate<strtotime(date('Y-m-d').' 00:00:00'))
 				tfx_load_url();
 		}
 
