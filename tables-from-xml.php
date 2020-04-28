@@ -3,7 +3,7 @@
  * Plugin Name: Tables From XML
  * Plugin URI: https://patryksawicki.pl/wp-plugins/tables-from-xml
  * Description: Create table from XML file.
- * Version: 1.9
+ * Version: 2.0
  * Author: Patryk Sawicki
  * Author URI: https://patryksawicki.pl
  */
@@ -194,7 +194,7 @@ function tfx_table_fields(){
 		echo "<input id='table_fields_{$i}_after_value' name='tfx_options[table_field_{$i}_after_value]' type='text' value='".($options['table_field_'.$i.'_after_value'] ?? '')."' placeholder='".__('Text after value:', 'tables-from-xml')."' /> ";
 		echo "<input id='table_fields_{$i}_id_change' name='tfx_options[table_field_{$i}_id_change]' type='text' value='".($options['table_field_'.$i.'_id_change'] ?? '')."' placeholder='".__('id=text|class;id2=text|class', 'tables-from-xml')."' /> ";
 		echo "<input id='table_fields_{$i}_type' name='tfx_options[table_field_{$i}_type]' type='text' value='".($options['table_field_'.$i.'_type'] ?? '')."' placeholder='".__('Type of field:', 'tables-from-xml')."' /> ";
-		echo "<input id='table_fields_{$i}_empty_if' name='tfx_options[table_field_{$i}_empty_if]' type='text' value='".($options['table_field_'.$i.'_empty_if'] ?? '')."' placeholder='".__('Empty if field == 1:', 'tables-from-xml')."' /> ";
+		echo "<input id='table_fields_{$i}_empty_if' name='tfx_options[table_field_{$i}_empty_if]' type='text' value='".($options['table_field_'.$i.'_empty_if'] ?? '')."' placeholder='".__('Empty if field == 0:', 'tables-from-xml')."' /> ";
 
 		echo "<br /><br />";
 	}
@@ -633,7 +633,7 @@ function tfx_table($attr)
 						if(!empty($name['desktop']))
 						{
 							$htmlTable.="<td class='hidden-xs hidden-sm'>$typeStart";
-								if(!empty($empty_if) && $row[$empty_if]==1)
+								if(!empty($empty_if) && $row[$empty_if]!=1)
 									$htmlTable.='';
 								elseif(is_numeric($row[$name['name']]))
 									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ').$afterValue;
