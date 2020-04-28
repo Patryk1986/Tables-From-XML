@@ -3,7 +3,7 @@
  * Plugin Name: Tables From XML
  * Plugin URI: https://patryksawicki.pl/wp-plugins/tables-from-xml
  * Description: Create table from XML file.
- * Version: 1.8
+ * Version: 1.9
  * Author: Patryk Sawicki
  * Author URI: https://patryksawicki.pl
  */
