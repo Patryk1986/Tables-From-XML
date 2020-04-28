@@ -194,6 +194,7 @@ function tfx_table_fields(){
 		echo "<input id='table_fields_{$i}_after_value' name='tfx_options[table_field_{$i}_after_value]' type='text' value='".($options['table_field_'.$i.'_after_value'] ?? '')."' placeholder='".__('Text after value:', 'tables-from-xml')."' /> ";
 		echo "<input id='table_fields_{$i}_id_change' name='tfx_options[table_field_{$i}_id_change]' type='text' value='".($options['table_field_'.$i.'_id_change'] ?? '')."' placeholder='".__('id=text|class;id2=text|class', 'tables-from-xml')."' /> ";
 		echo "<input id='table_fields_{$i}_type' name='tfx_options[table_field_{$i}_type]' type='text' value='".($options['table_field_'.$i.'_type'] ?? '')."' placeholder='".__('Type of field:', 'tables-from-xml')."' /> ";
+		echo "<input id='table_fields_{$i}_empty_if' name='tfx_options[table_field_{$i}_empty_if]' type='text' value='".($options['table_field_'.$i.'_empty_if'] ?? '')."' placeholder='".__('Empty if field == 1:', 'tables-from-xml')."' /> ";
 
 		echo "<br /><br />";
 	}
@@ -240,6 +241,7 @@ function tfx_table($attr)
 			$row['after_value']=$options["table_field_{$j}_after_value"];
 			$row['id_change']=$options["table_field_{$j}_id_change"];
 			$row['type']=$options["table_field_{$j}_type"];
+			$row['empty_if']=$options["table_field_{$j}_empty_if"];
 			$names[]=$row;
 		}
 
@@ -598,6 +600,7 @@ function tfx_table($attr)
 						$round=$name['round'] ?? 2;
 						$afterValue=$name['after_value'] ?? '';
 						$type=$name['type'] ?? '';
+						$empty_if=$name['empty_if'];
 						$class='';
 
 						if(isset($name['id_change']) && !empty($name['id_change']))
@@ -630,22 +633,25 @@ function tfx_table($attr)
 						if(!empty($name['desktop']))
 						{
 							$htmlTable.="<td class='hidden-xs hidden-sm'>$typeStart";
-								if(is_numeric($row[$name['name']]))
-									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ');
+								if(!empty($empty_if) && $row[$empty_if]==1)
+									$htmlTable.='';
+								elseif(is_numeric($row[$name['name']]))
+									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ').$afterValue;
 								else
-									$htmlTable.=$row[$name['name']];
+									$htmlTable.=$row[$name['name']].$afterValue;
 
-								$htmlTable.=$afterValue;
 							$htmlTable.="$typeEnd</td>";
 						}
 						if(!empty($name['mobile']))
 						{
 							$htmlTable.="<td class='hidden-md hidden-lg'>$typeStart";
-								if(is_numeric($row[$name['name']]))
-									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ');
+								if(!empty($empty_if) && $row[$empty_if]==1)
+									$htmlTable.='';
+								elseif(is_numeric($row[$name['name']]))
+									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ').$afterValue;
 								else
-									$htmlTable.=$row[$name['name']];
-								$htmlTable.=$afterValue;
+									$htmlTable.=$row[$name['name']].$afterValue;
+
 							$htmlTable.="$typeEnd</td>";
 						}
 					}
