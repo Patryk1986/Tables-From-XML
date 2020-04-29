@@ -3,7 +3,7 @@
  * Plugin Name: Tables From XML
  * Plugin URI: https://patryksawicki.pl/wp-plugins/tables-from-xml
  * Description: Create table from XML file.
- * Version: 2.0
+ * Version: 2.1
  * Author: Patryk Sawicki
  * Author URI: https://patryksawicki.pl
  */
@@ -195,6 +195,7 @@ function tfx_table_fields(){
 		echo "<input id='table_fields_{$i}_id_change' name='tfx_options[table_field_{$i}_id_change]' type='text' value='".($options['table_field_'.$i.'_id_change'] ?? '')."' placeholder='".__('id=text|class;id2=text|class', 'tables-from-xml')."' /> ";
 		echo "<input id='table_fields_{$i}_type' name='tfx_options[table_field_{$i}_type]' type='text' value='".($options['table_field_'.$i.'_type'] ?? '')."' placeholder='".__('Type of field:', 'tables-from-xml')."' /> ";
 		echo "<input id='table_fields_{$i}_empty_if' name='tfx_options[table_field_{$i}_empty_if]' type='text' value='".($options['table_field_'.$i.'_empty_if'] ?? '')."' placeholder='".__('Empty if field == 0:', 'tables-from-xml')."' /> ";
+		echo "<input id='table_fields_{$i}_text_if_empty' name='tfx_options[table_field_{$i}_text_if_empty]' type='text' value='".($options['table_field_'.$i.'_text_if_empty'] ?? '')."' placeholder='".__('Text id empty:', 'tables-from-xml')."' /> ";
 
 		echo "<br /><br />";
 	}
@@ -242,6 +243,7 @@ function tfx_table($attr)
 			$row['id_change']=$options["table_field_{$j}_id_change"];
 			$row['type']=$options["table_field_{$j}_type"];
 			$row['empty_if']=$options["table_field_{$j}_empty_if"];
+			$row['text_if_empty']=$options["table_field_{$j}_text_if_empty"];
 			$names[]=$row;
 		}
 
@@ -634,7 +636,7 @@ function tfx_table($attr)
 						{
 							$htmlTable.="<td class='hidden-xs hidden-sm'>$typeStart";
 								if(!empty($empty_if) && $row[$empty_if]!=1)
-									$htmlTable.='';
+									$htmlTable.=$name['text_if_empty'] ?? '';
 								elseif(is_numeric($row[$name['name']]))
 									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ').$afterValue;
 								else
@@ -645,8 +647,8 @@ function tfx_table($attr)
 						if(!empty($name['mobile']))
 						{
 							$htmlTable.="<td class='hidden-md hidden-lg'>$typeStart";
-								if(!empty($empty_if) && $row[$empty_if]==1)
-									$htmlTable.='';
+								if(!empty($empty_if) && $row[$empty_if]!=1)
+									$htmlTable.=$name['text_if_empty'] ?? '';
 								elseif(is_numeric($row[$name['name']]))
 									$htmlTable.=number_format($row[$name['name']], $round, ',', ' ').$afterValue;
 								else
